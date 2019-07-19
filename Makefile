@@ -10,11 +10,9 @@ INSTALL_FILES = \
 	$(WEB)/l10n/cultures.json \
 	$(WEB)/l10n/de-DE.json \
 	$(WEB)/l10n/en-US.json \
-	$(WEB)/l10n/es-ES.json \
-	$(WEB)/l10n/it-IT.json \
 	$(CSS) \
 	$(JS) \
-	easydb-barcode-display.config.yml
+	easydb-barcode-display.yml
 
 COFFEE_FILES = \
     src/webfrontend/Barcode.coffee \
