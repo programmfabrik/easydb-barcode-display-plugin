@@ -1,7 +1,10 @@
 class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 
 	isSimpleSplit: ->
-		true
+		return true
+
+	renderAsField: ->
+		return true
 
 	getOptions: ->
 		disableEnableBarcodeType = (field) ->
@@ -62,14 +65,6 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 				return options
 		,
 			fieldSelector
-#		,
-#			name: "width"
-#			form: label: $$('barcode.custom.splitter.options.width.hint')
-#			type: CUI.Select
-#			options: =>
-#				for width in ["100%", "75%", "50%", "25%"]
-#					text: width
-#					value: width
 		]
 
 	renderField: (opts) ->
