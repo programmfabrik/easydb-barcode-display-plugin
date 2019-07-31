@@ -1,5 +1,5 @@
 plugin:
-  name: easydb-barcode-display
+  name: barcode-display
   version: 1.0
   server:
     api-version:
