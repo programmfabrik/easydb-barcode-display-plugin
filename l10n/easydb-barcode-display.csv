@@ -13,3 +13,4 @@ barcode.custom.splitter.options.barcode-type.label,Barcode type,Barcode type
 barcode.custom.splitter.options.barcode-type.hint,"Only for type ""Barcode"". [Barcode types explained](https://github.com/lindell/JsBarcode/wiki#barcodes)","Only for type ""Barcode"". [Barcode types explained](https://github.com/lindell/JsBarcode/wiki#barcodes)"
 barcode.label.empty-data,No valid data to generate the barcode,No valid data to generate the barcode
 barcode.label.qr-data-too-long,Data for QR code is too long,Data for QR code is too long
+barcode.mask.splitter.option.blockWidth,%(value)s breit,%(value)s width

@@ -26,17 +26,20 @@ class ez5.Barcode extends CUI.DOMElement
 	render: (data) ->
 		if not data or not CUI.util.isString(data)
 			if @_mode == "editor"
-				label = new CUI.Label(text: $$("barcode.label.empty-data"), centered: true, appearance: "secondary")
-				CUI.dom.replace(@DOM, label)
+				@__replaceWithEmptyDataLabel()
 				return @
 			CUI.dom.empty(@DOM) # No data, other mode than editor, remove the barcode.
 			return @
 
 		if @_type == ez5.Barcode.TYPE_BAR
 			element = CUI.dom.$element("canvas", "ez5-barcode")
-			JsBarcode(element, data,
-				format: @_barcode_type
-			)
+			try
+				JsBarcode(element, data,
+					format: @_barcode_type
+				)
+			catch
+				@__replaceWithEmptyDataLabel()
+				return @
 		else
 			data = data.toString()
 			if data.length >= 1056 # More than 1056 the library throws an error.
@@ -49,3 +52,8 @@ class ez5.Barcode extends CUI.DOMElement
 
 		CUI.dom.replace(@DOM, element)
 		return @
+
+	__replaceWithEmptyDataLabel: ->
+		label = new CUI.Label(text: $$("barcode.label.empty-data"), centered: true, appearance: "secondary")
+		CUI.dom.replace(@DOM, label)
+		return
