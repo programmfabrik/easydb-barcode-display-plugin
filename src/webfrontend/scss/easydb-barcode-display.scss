@@ -1,8 +1,5 @@
-.cui-barcode {
-  width: 100%;
-  display: flex;
-
-  & > canvas, div {
-    margin: auto;
-  }
+.cui-barcode canvas,
+.cui-barcode img {
+  max-width: 100%;
+  height: auto;
 }
