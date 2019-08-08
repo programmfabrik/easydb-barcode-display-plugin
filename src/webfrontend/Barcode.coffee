@@ -24,36 +24,40 @@ class ez5.Barcode extends CUI.DOMElement
 		return @
 
 	render: (data) ->
+		isQR = @_type == ez5.Barcode.TYPE_QR
+		if isQR
+			@addClass("cui-barcode--matrix")
+
 		if not data or not CUI.util.isString(data)
 			if @_mode == "editor"
-				@__replaceWithEmptyDataLabel()
+				@__replaceWithLabel("barcode.label.empty-data")
 				return @
 			CUI.dom.empty(@DOM) # No data, other mode than editor, remove the barcode.
 			return @
 
-		if @_type == ez5.Barcode.TYPE_BAR
-			element = CUI.dom.$element("canvas", "ez5-barcode")
-			try
-				JsBarcode(element, data,
-					format: @_barcode_type
-				)
-			catch
-				@__replaceWithEmptyDataLabel()
-				return @
-		else
+		if isQR
 			data = data.toString()
 			if data.length >= 1056 # More than 1056 the library throws an error.
 				label = new CUI.Label(text: $$("barcode.label.qr-data-too-long"), centered: true, appearance: "secondary")
 				CUI.dom.replace(@DOM, label)
 				return @
 
-			element = CUI.dom.div("ez5-qrcode")
+			element = CUI.dom.div()
 			new QRCode(element, data)
+		else
+			element = CUI.dom.$element("canvas")
+			try
+				JsBarcode(element, data,
+					format: @_barcode_type
+				)
+			catch
+				@__replaceWithLabel("barcode.label.wrong-data")
+				return @
 
 		CUI.dom.replace(@DOM, element)
 		return @
 
-	__replaceWithEmptyDataLabel: ->
-		label = new CUI.Label(text: $$("barcode.label.empty-data"), centered: true, appearance: "secondary")
+	__replaceWithLabel: (locaKey) ->
+		label = new CUI.Label(text: $$(locaKey), centered: true, appearance: "secondary")
 		CUI.dom.replace(@DOM, label)
 		return
