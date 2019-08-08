@@ -1,17 +1,17 @@
 key,de-DE,en-US
-barcode.custom.splitter.options.field-selector.label,Field,Field
-barcode.custom.splitter.options.field-selector.placeholder,Select a text or number field,Select a text or number field
+barcode.custom.splitter.options.field-selector.label,Feld,Field
+barcode.custom.splitter.options.field-selector.placeholder,Auswählen eines Text- oder Zahlenfeldes,Select a text or number field
 barcode.mask.splitter.title|text,Barcode,Barcode
 barcode.mask.splitter.name,Barcode,Barcode
-barcode.mask.splitter.option.field_name,Field: %(value)s,Field: %(value)s
-barcode.mask.splitter.option.code_type,Type: %(value)s,Type: %(value)s
-barcode.mask.splitter.option.barcode_type,Barcode type: %(value)s,Barcode type: %(value)s
-barcode.custom.splitter.options.code-type.label,Type,Type
+barcode.mask.splitter.option.field_name,Feld: %(value)s,Field: %(value)s
+barcode.mask.splitter.option.code_type,Typ: %(value)s,Type: %(value)s
+barcode.mask.splitter.option.barcode_type,Barcode-Typ: %(value)s,Barcode type: %(value)s
+barcode.custom.splitter.options.code-type.label,Typ,Type
 barcode.custom.splitter.options.code-type.barcode.text,Barcode,Barcode
 barcode.custom.splitter.options.code-type.qrcode.text,QR code,QR code
-barcode.custom.splitter.options.barcode-type.label,Barcode type,Barcode type
-barcode.custom.splitter.options.barcode-type.hint,"Only for type ""Barcode"". [Barcode types explained](https://github.com/lindell/JsBarcode/wiki#barcodes)","Only for type ""Barcode"". [Barcode types explained](https://github.com/lindell/JsBarcode/wiki#barcodes)"
-barcode.label.empty-data,Enter text to generate the barcode,Enter text to generate the barcode
-barcode.label.wrong-data,No valid data to generate the barcode,No valid data to generate the barcode
-barcode.label.qr-data-too-long,Data for QR code is too long,Data for QR code is too long
+barcode.custom.splitter.options.barcode-type.label,Barcode-Typ,Barcode type
+barcode.custom.splitter.options.barcode-type.hint,"Nur für Typ ""Barcode"". [Barcodetypen erklärt](https://github.com/lindell/JsBarcode/wiki#barcodes)","Only for type ""Barcode"". [Barcode types explained](https://github.com/lindell/JsBarcode/wiki#barcodes)"
+barcode.label.empty-data,"Text eingeben, um den Barcode zu generieren",Enter text to generate the barcode
+barcode.label.wrong-data,Keine gültigen Daten zur Generierung des Barcodes,No valid data to generate the barcode
+barcode.label.qr-data-too-long,Daten für QR-Code sind zu lang,Data for QR code is too long
 barcode.mask.splitter.option.blockWidth,%(value)s breit,%(value)s width
