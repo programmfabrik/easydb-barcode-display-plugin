@@ -3,3 +3,43 @@
   max-width: 100%;
   height: auto;
 }
+
+.cui-barcode--matrix canvas {
+  display: block !important;
+}
+
+.cui-barcode--matrix img {
+  display: none !important;
+}
+
+.cui-barcode .cui-label {
+  max-width: 312px;
+}
+
+.cui-barcode--matrix .cui-label {
+  max-width: 256px;
+}
+
+.cui-barcode .cui-label-content {
+  position: relative;
+  width: 100%;
+  padding-bottom: 43%;
+  box-sizing: content-box;
+  box-shadow: 0 0 0 1px hsl(205, 20%, 83%) inset;
+}
+
+.cui-barcode--matrix .cui-label-content {
+  padding-bottom: 100%;
+}
+
+.cui-barcode .cui-label-content span {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
