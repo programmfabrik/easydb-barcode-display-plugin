@@ -58,6 +58,6 @@ class ez5.Barcode extends CUI.DOMElement
 		return @
 
 	__replaceWithLabel: (locaKey) ->
-		label = new CUI.Label(text: $$(locaKey), centered: true, appearance: "secondary")
+		label = new CUI.Label(text: $$(locaKey), centered: true, appearance: "secondary", multiline: true)
 		CUI.dom.replace(@DOM, label)
 		return
