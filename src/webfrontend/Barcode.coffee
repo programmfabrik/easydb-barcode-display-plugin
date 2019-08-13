@@ -38,7 +38,7 @@ class ez5.Barcode extends CUI.DOMElement
 		if isQR
 			data = data.toString()
 			if data.length >= 1056 # More than 1056 the library throws an error.
-				label = new CUI.Label(text: $$("barcode.label.qr-data-too-long"), centered: true, appearance: "secondary")
+				label = new CUI.Label(text: $$("barcode.label.qr-data-too-long"), centered: true, appearance: "secondary", size: "mini")
 				CUI.dom.replace(@DOM, label)
 				return @
 
@@ -58,6 +58,6 @@ class ez5.Barcode extends CUI.DOMElement
 		return @
 
 	__replaceWithLabel: (locaKey) ->
-		label = new CUI.Label(text: $$(locaKey), centered: true, appearance: "secondary", multiline: true)
+		label = new CUI.Label(text: $$(locaKey), centered: true, appearance: "secondary", size: "mini", multiline: true)
 		CUI.dom.replace(@DOM, label)
 		return

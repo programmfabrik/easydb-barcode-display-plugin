@@ -1,43 +1,33 @@
-.cui-barcode canvas,
-.cui-barcode img {
-  max-width: 100%;
-  height: auto;
-}
-
-.cui-barcode--matrix canvas {
-  display: block !important;
-}
-
-.cui-barcode--matrix img {
-  display: none !important;
-}
-
-.cui-barcode .cui-label {
-  max-width: 339px;
-}
-
-.cui-barcode--matrix .cui-label {
-  max-width: 256px;
-}
-
-.cui-barcode .cui-label-content {
+.cui-barcode {
   position: relative;
-  width: 100%;
   padding-bottom: 43%;
-  box-sizing: content-box;
-  box-shadow: 0 0 0 1px hsl(205, 20%, 83%) inset;
-}
 
-.cui-barcode--matrix .cui-label-content {
-  padding-bottom: 100%;
-}
+  canvas,
+  img,
+  .cui-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left top;
+  }
 
-.cui-barcode .cui-label-content span {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 0 10px;
-  left: 0;
-  width: 100%;
-  text-align: center;
+  &--matrix {
+    padding-bottom: 100%;
+
+    canvas {
+      display: block !important;
+    }
+
+    img {
+      display: none !important;
+    }
+  }
+
+  .cui-label {
+    background: hsl(210,5%,96%);
+    padding: 10px;
+  }
 }
