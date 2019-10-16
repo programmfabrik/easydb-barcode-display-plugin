@@ -25,7 +25,7 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 			objecttype_id: @maskEditor.getMask().getTable().table_id
 			schema: "HEAD"
 			filter: (field) =>
-				if not @father.children.some((_field) => _field.getData().field_displayname == field.name())
+				if not @father.children.some((_field) => _field.getData().field_name == field.name())
 					return
 
 				return field instanceof TextColumn and
