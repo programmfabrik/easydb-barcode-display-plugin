@@ -15,3 +15,8 @@ barcode.label.empty-data,"Text eingeben, um den Barcode zu generieren",Enter tex
 barcode.label.wrong-data,Keine gültigen Daten zur Generierung des Barcodes,No valid data to generate the barcode
 barcode.label.qr-data-too-long,Daten für QR-Code sind zu lang,Data for QR code is too long
 barcode.mask.splitter.option.blockWidth,%(value)s breit,%(value)s width
+pdf-creator.node.barcode.display-name,Barcode,Barcode
+pdf-creator.settings.barcode.columns-select|text,Columns,Columns
+pdf-creator.settings.barcode.column-gap|text,Column gap (mm),Column gap (mm)
+pdf-creator.settings.barcode.barcode-width|text,Barcode width,Barcode width
+pdf-creator.settings.barcode.barcode-width|placeholder,100%,100%

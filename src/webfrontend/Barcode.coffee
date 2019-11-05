@@ -23,7 +23,7 @@ class ez5.Barcode extends CUI.DOMElement
 		@registerDOMElement(CUI.dom.div())
 		return @
 
-	render: (data) ->
+	render: (data, convertToImage = false) ->
 		isQR = @_type == ez5.Barcode.TYPE_QR
 		if isQR
 			@addClass("cui-barcode--matrix")
@@ -53,6 +53,12 @@ class ez5.Barcode extends CUI.DOMElement
 			catch
 				@__replaceWithLabel("barcode.label.wrong-data")
 				return @
+
+		if convertToImage
+			# Overrides the element with an image of the barcode/qrcode.
+			canvas = CUI.dom.findElement(element, "canvas")
+			url = canvas.toDataURL()
+			element = CUI.dom.element("img", src: url)
 
 		CUI.dom.replace(@DOM, element)
 		return @
