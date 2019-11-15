@@ -17,7 +17,6 @@ INSTALL_FILES = \
 COFFEE_FILES = \
     src/webfrontend/Barcode.coffee \
     src/webfrontend/BarcodeMaskSplitter.coffee \
-	src/webfrontend/PdfBarcodeNode.coffee \
 	src/webfrontend/BarcodeEditorPlugin.coffee
 
 SCSS_FILES = src/webfrontend/scss/easydb-barcode-display.scss
