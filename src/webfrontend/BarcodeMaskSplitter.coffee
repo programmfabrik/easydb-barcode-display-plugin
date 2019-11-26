@@ -7,6 +7,15 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 		return true
 
 	getOptions: ->
+		fieldSelectorOpts =
+			store_value: "name"
+			filter: (field) =>
+				if not @father.children.some((_field) => _field.getData().field_name == field.name())
+					return false
+				return true
+		return ez5.BarcodeMaskSplitter.getBarcodeOptions(@maskEditor.getMask().getTable().table_id, fieldSelectorOpts)
+
+	@getBarcodeOptions: (idObjecttype, fieldSelectorOptions = {}) ->
 		disableEnableBarcodeType = (field) ->
 			form = field.getForm()
 			data = form.getData()
@@ -17,15 +26,17 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 				barcodeTypeField.disable()
 			return
 
+		fieldSelectorFilter = fieldSelectorOptions.filter
+
 		fieldSelector = new ez5.FieldSelector
 			form: label: $$("barcode.custom.splitter.options.field-selector.label")
 			name: "field_name"
-			store_value: "name"
+			store_value: fieldSelectorOptions.store_value or "name"
 			placeholder: $$("barcode.custom.splitter.options.field-selector.placeholder")
-			objecttype_id: @maskEditor.getMask().getTable().table_id
+			objecttype_id: idObjecttype
 			schema: "HEAD"
 			filter: (field) =>
-				if not @father.children.some((_field) => _field.getData().field_name == field.name())
+				if fieldSelectorFilter and not fieldSelectorFilter?(field)
 					return
 
 				return field instanceof TextColumn and
