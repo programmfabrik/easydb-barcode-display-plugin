@@ -37,7 +37,7 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 			schema: "HEAD"
 			filter: (field) =>
 				if fieldSelectorFilter and not fieldSelectorFilter?(field)
-					return
+					return false
 
 				return field instanceof TextColumn and
 					field not instanceof DecimalColumn and
