@@ -1,6 +1,10 @@
 .cui-barcode {
-  position: relative;
-  padding-bottom: 43%;
+  max-width: 234px;
+   
+  &-ratio {
+    position: relative;
+    padding-bottom: 43%;
+  }
 
   canvas,
   img,
@@ -15,7 +19,9 @@
   }
 
   &--matrix {
-    padding-bottom: 100%;
+    .cui-barcode-ratio {
+      padding-bottom: 100%;
+    }
 
     canvas {
       display: block !important;

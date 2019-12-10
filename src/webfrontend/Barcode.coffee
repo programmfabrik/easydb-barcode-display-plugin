@@ -21,6 +21,8 @@ class ez5.Barcode extends CUI.DOMElement
 		super(opts)
 
 		@registerDOMElement(CUI.dom.div())
+		@ratio = CUI.dom.div("cui-barcode-ratio")
+		CUI.dom.append(@DOM, @ratio)
 		return @
 
 	render: (data, convertToImage = false) ->
@@ -32,14 +34,14 @@ class ez5.Barcode extends CUI.DOMElement
 			if @_mode == "editor"
 				@__replaceWithLabel("barcode.label.empty-data")
 				return @
-			CUI.dom.empty(@DOM) # No data, other mode than editor, remove the barcode.
+			CUI.dom.empty(@ratio) # No data, other mode than editor, remove the barcode.
 			return @
 
 		if isQR
 			data = data.toString()
 			if data.length >= 1056 # More than 1056 the library throws an error.
 				label = new CUI.Label(text: $$("barcode.label.qr-data-too-long"), centered: true, appearance: "secondary", size: "mini")
-				CUI.dom.replace(@DOM, label)
+				CUI.dom.replace(@ratio, label)
 				return @
 
 			element = CUI.dom.div()
@@ -60,7 +62,7 @@ class ez5.Barcode extends CUI.DOMElement
 			url = canvas.toDataURL()
 			element = CUI.dom.element("img", src: url)
 
-		CUI.dom.replace(@DOM, element)
+		CUI.dom.replace(@ratio, element)
 		return @
 
 	__replaceWithLabel: (locaKey) ->
