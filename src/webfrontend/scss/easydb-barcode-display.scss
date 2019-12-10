@@ -1,34 +1,38 @@
 .cui-barcode {
-  max-width: 234px;
-   
-  &-ratio {
-    position: relative;
-    padding-bottom: 43%;
-  }
-
   canvas,
   img,
   .cui-label {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    height: 142px;
+    width: auto;
+    max-width: 100%;
     object-fit: contain;
     object-position: left top;
   }
 
+  .cui-label {
+    max-width: 256px;
+  }
+
   &--matrix {
+    max-width: 256px;
+
     .cui-barcode-ratio {
+      position: relative;
       padding-bottom: 100%;
+    }
+
+    canvas,
+    img,
+    .cui-label {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
     }
 
     canvas {
       display: block !important;
-    }
-
-    img {
-      display: none !important;
     }
   }
 
