@@ -13,7 +13,13 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 				if not @father.children.some((_field) => _field.getData().field_name == field.name())
 					return false
 				return true
-		return ez5.BarcodeMaskSplitter.getBarcodeOptions(@maskEditor.getMask().getTable().table_id, fieldSelectorOpts)
+		fields = ez5.BarcodeMaskSplitter.getBarcodeOptions(@maskEditor.getMask().getTable().table_id, fieldSelectorOpts)
+		fields.push
+			type: CUI.NumberInput
+			form: label: $$("barcode.custom.splitter.options.expert_search_limit.label")
+			name: "expert_search_limit"
+			decimals: 0
+		return fields
 
 	@getBarcodeOptions: (idObjecttype, fieldSelectorOptions = {}) ->
 		disableEnableBarcodeType = (field) ->
