@@ -7,7 +7,17 @@ class ez5.BarcodeSearchExpertPlugin extends ez5.SearchExpertPlugin
 		if CUI.util.isEmpty(data[field.name()])
 			return
 
-		for _field in field.mask.getFields("all")
+		if field?.mask
+			fields = field.mask.getFields("all")
+		else if field instanceof MultipleFieldsContainer and field.fields
+			fields = []
+			for _field in field.fields
+				_fields = _field.mask.getFields("all")
+				fields = fields.concat(_fields)
+		else
+			return
+
+		for _field in fields
 			if _field not instanceof ez5.BarcodeMaskSplitter
 				continue
 
