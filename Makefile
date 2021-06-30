@@ -34,7 +34,7 @@ ${JS}: $(THIRDPARTY_FILES) $(subst .coffee,.coffee.js,${COFFEE_FILES})
 	mkdir -p $(dir $@)
 	cat $^ > $@
 
-build: code $(L10N) css
+build: code $(L10N) css buildinfojson
 
 code: $(JS) $(THIRDPARTY_FILES)
 
