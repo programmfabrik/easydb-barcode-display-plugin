@@ -1,5 +1,5 @@
 plugin:
-  name: easydb-barcode-display-plugin
+  name: easydb-barcode-display
   version: 1.0
   server:
     api-version:
