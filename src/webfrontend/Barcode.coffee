@@ -30,7 +30,7 @@ class ez5.Barcode extends CUI.DOMElement
 		if isQR
 			@addClass("cui-barcode--matrix")
 
-		if not data or not CUI.util.isString(data)
+		if not data or not (CUI.util.isString(data) or CUI.util.isNumber(data))
 			if @_mode == "editor"
 				@__replaceWithLabel("barcode.label.empty-data.#{@__getLocaType()}")
 				return @
