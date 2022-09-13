@@ -98,7 +98,8 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 			mode: opts.mode
 		barcode.render(data)
 
-		hasContent: (opts) ->
+	hasContent: (opts) ->
+		console.log "Fooo"
 		fieldName = @getDataOptions().field_name
 		if not fieldName # Not configured.
 			return false
