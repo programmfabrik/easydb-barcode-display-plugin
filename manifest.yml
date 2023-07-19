@@ -1,5 +1,8 @@
 plugin:
   name: easydb-barcode-display
+  displayname:
+    en-US: "Custom Mask Splitter: Barcode"
+    de-DE: "Custom Mask Splitter: Barcode"
   version: 1.0
   server:
     api-version:
