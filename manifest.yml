@@ -1,5 +1,6 @@
 plugin:
   name: easydb-barcode-display
+  url: https://github.com/programmfabrik/easydb-barcode-display-plugin
   displayname:
     en-US: "Custom Mask Splitter: Barcode"
     de-DE: "Custom Mask Splitter: Barcode"
