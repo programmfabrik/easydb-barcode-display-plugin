@@ -1,0 +1,32 @@
+.cui-barcode canvas, .cui-barcode img, .cui-barcode .cui-label {
+	 height: 142px;
+	 width: auto;
+	 max-width: 100%;
+	 object-fit: contain;
+	 object-position: left top;
+}
+ .cui-barcode .cui-label {
+	 max-width: 256px;
+}
+ .cui-barcode--matrix {
+	 max-width: 256px;
+}
+ .cui-barcode--matrix .cui-barcode-ratio {
+	 position: relative;
+	 padding-bottom: 100%;
+}
+ .cui-barcode--matrix canvas, .cui-barcode--matrix img, .cui-barcode--matrix .cui-label {
+	 position: absolute;
+	 left: 0;
+	 top: 0;
+	 width: 100%;
+	 height: 100%;
+}
+ .cui-barcode--matrix canvas {
+	 display: block !important;
+}
+ .cui-barcode .cui-label {
+	 background: #f4f5f5;
+	 padding: 10px;
+}
+ 
