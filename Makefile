@@ -20,8 +20,6 @@ COFFEE_FILES = \
 	src/webfrontend/BarcodeEditorPlugin.coffee \
 	src/webfrontend/BarcodeSearchExpertPlugin.coffee
 
-SCSS_FILES = src/webfrontend/scss/easydb-barcode-display.scss
-
 all: build
 
 include $(EASYDB_LIB)/tools/base-plugins.make
@@ -35,10 +33,14 @@ ${JS}: $(THIRDPARTY_FILES) $(subst .coffee,.coffee.js,${COFFEE_FILES})
 	mkdir -p $(dir $@)
 	cat $^ > $@
 
-build: code $(L10N) css buildinfojson
+build: code $(L10N) copycss buildinfojson
 
 code: $(JS) $(THIRDPARTY_FILES)
 
 clean: clean-base
 
 wipe: wipe-base
+
+copycss: 
+	mkdir -p build/webfrontend
+	cp src/webfrontend/css/easydb-barcode-display.css build/webfrontend/easydb-barcode-display.css

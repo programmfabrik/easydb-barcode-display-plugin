@@ -18,3 +18,7 @@ barcode.mask.splitter.option.blockWidth,%(value)s breit,FALSE,%(value)s width,FA
 barcode.mask.splitter.option.code_type,Typ: %(value)s,FALSE,Type: %(value)s,FALSE,Type: %(value)s,FALSE,Tyyppi: %(value)s,FALSE,Typ: %(value)s,FALSE,,FALSE,,FALSE,,FALSE
 barcode.mask.splitter.option.field_name,Feld: %(value)s,FALSE,Field: %(value)s,FALSE,Field: %(value)s,FALSE,Kenttä: %(value)s,FALSE,Fält: %(value)s,FALSE,,FALSE,,FALSE,,FALSE
 barcode.mask.splitter.title|text,Barcode,FALSE,Barcode,FALSE,Barcode,FALSE,Viivakoodi,FALSE,Streckkod,FALSE,,FALSE,,FALSE,,FALSE
+barcode.custom.splitter.options.code_prefix.label,Präfix,Prefix,Prefix,Prefix,Prefix,Prefix,Prefix,Prefix
+barcode.custom.splitter.options.code_prefix.hint,Wird vor dem Wert eingefügt,Is inserted before value,Is inserted before value,Is inserted before value,Is inserted before value,Is inserted before value,Is inserted before value
+barcode.custom.splitter.options.code_suffix.label,Suffix,Suffix,Suffix,Suffix,Suffix,Suffix,Suffix,Suffix
+barcode.custom.splitter.options.code_suffix.hint,Wird nach dem Wert eingefügt,Is inserted after value,Is inserted after value,Is inserted after value,Is inserted after value,Is inserted after value,Is inserted after value
