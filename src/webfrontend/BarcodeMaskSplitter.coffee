@@ -91,12 +91,13 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 
 		_data = opts.data
 		data = _data[fieldName]
+		localizedDisplayName = _data["#{fieldName}:rendered"].opts.field.ColumnSchema._name_localized;
 
 		barcode = new ez5.Barcode
 			type: @getDataOptions().code_type
 			barcode_type: @getDataOptions().barcode_type
 			mode: opts.mode
-		barcode.render(data)
+		barcode.render(data, { displayName: localizedDisplayName })
 
 	hasContent: (opts) ->
 		fieldName = @getDataOptions().field_name
@@ -104,9 +105,6 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 			return false
 		data = opts.data[fieldName]
 		return !!data
-
-		_data["#{fieldName}:barcode"] = barcode
-		return barcode
 
 	isEnabledForNested: ->
 		return true

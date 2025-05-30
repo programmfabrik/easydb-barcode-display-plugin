@@ -25,14 +25,14 @@ class ez5.Barcode extends CUI.DOMElement
 		CUI.dom.append(@DOM, @__ratio)
 		return @
 
-	render: (data, convertToImage = false) ->
+	render: (data, {convertToImage = false, displayName = ""} = {}) ->
 		isQR = @_type == ez5.Barcode.TYPE_QR
 		if isQR
 			@addClass("cui-barcode--matrix")
 
 		if not data or not (CUI.util.isString(data) or CUI.util.isNumber(data))
 			if @_mode == "editor"
-				@__replaceWithLabel("barcode.label.empty-data.#{@__getLocaType()}")
+				@__replaceWithLabel("barcode.label.empty-data.#{@__getLocaType()}", displayName)
 				return @
 			CUI.dom.empty(@__ratio) # No data, other mode than editor, remove the barcode.
 			return @
@@ -67,8 +67,8 @@ class ez5.Barcode extends CUI.DOMElement
 		CUI.dom.replace(@__ratio, element)
 		return @
 
-	__replaceWithLabel: (locaKey) ->
-		label = new CUI.Label(text: $$(locaKey), centered: true, appearance: "secondary", size: "mini", multiline: true)
+	__replaceWithLabel: (locaKey, arg) ->
+		label = new CUI.Label(text: $$(locaKey, arg: arg), centered: true, appearance: "secondary", size: "mini", multiline: true)
 		CUI.dom.replace(@__ratio, label)
 		return
 
