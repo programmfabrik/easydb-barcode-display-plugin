@@ -25,7 +25,7 @@ class ez5.Barcode extends CUI.DOMElement
 		CUI.dom.append(@DOM, @__ratio)
 		return @
 
-	render: (data, {convertToImage = false, displayName = ""} = {}) ->
+	render: (data, { convertToImage = false, displayName = "", fieldName, objectType } = {}) ->
 		isQR = @_type == ez5.Barcode.TYPE_QR
 		if isQR
 			@addClass("cui-barcode--matrix")
@@ -48,21 +48,37 @@ class ez5.Barcode extends CUI.DOMElement
 
 			img = CUI.dom.findElement(element, "img")
 			CUI.dom.remove(img)
+			canvas = CUI.dom.findElement(element, "canvas")
 		else
-			element = CUI.dom.$element("canvas")
+			canvas = CUI.dom.$element("canvas")
 			try
-				JsBarcode(element, data,
+				JsBarcode(canvas, data,
 					format: @_barcode_type
 				)
 			catch
 				@__replaceWithLabel("barcode.label.wrong-data.#{@__getLocaType()}")
 				return @
 
-		if convertToImage
-			# Overrides the element with an image of the barcode/qrcode.
-			canvas = CUI.dom.findElement(element, "canvas")
-			url = canvas.toDataURL()
-			element = CUI.dom.element("img", src: url)
+		url = canvas.toDataURL()
+		img = if convertToImage then CUI.dom.element("img", src: url) else canvas
+		fileName = "
+			#{objectType}
+			-
+			#{fieldName}
+			-
+			#{@_type}#{if @_type == ez5.Barcode.TYPE_BAR then " #{@_barcode_type}" else ""}
+		"
+		downloadLink = CUI.dom.element("a", { href: url, download: fileName })
+		downloadButton = new CUI.Button
+			icon: $$("barcode.download|icon")
+			size: "mini"
+			tooltip:
+				text: $$("barcode.download|tooltip")
+		element = CUI.dom.element("div")
+
+		CUI.dom.append(downloadLink, downloadButton)
+		CUI.dom.append(element, img)
+		CUI.dom.append(element, downloadLink)
 
 		CUI.dom.replace(@__ratio, element)
 		return @
