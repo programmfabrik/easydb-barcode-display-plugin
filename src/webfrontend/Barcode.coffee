@@ -78,7 +78,7 @@ class ez5.Barcode extends CUI.DOMElement
 
 		CUI.dom.append(downloadLink, downloadButton)
 		CUI.dom.append(element, img)
-		CUI.dom.append(element, downloadLink)
+		CUI.dom.append(@DOM, downloadLink)
 
 		CUI.dom.replace(@__ratio, element)
 		return @
