@@ -37,27 +37,27 @@ class ez5.Barcode extends CUI.DOMElement
 			CUI.dom.empty(@__ratio) # No data, other mode than editor, remove the barcode.
 			return @
 
-		if isQR
-			data = data.toString()
-			if data.length >= 1056 # More than 1056 the library throws an error.
-				@__replaceWithLabel("barcode.label.qr-data-too-long")
-				return @
+		try
+			if isQR
+				data = data.toString()
+				if data.length >= 1056 # More than 1056 the library throws an error.
+					@__replaceWithLabel("barcode.label.qr-data-too-long")
+					return @
 
-			element = CUI.dom.div()
-			new QRCode(element, data)
+				element = CUI.dom.div()
+				new QRCode(element, data)
 
-			img = CUI.dom.findElement(element, "img")
-			CUI.dom.remove(img)
-			canvas = CUI.dom.findElement(element, "canvas")
-		else
-			canvas = CUI.dom.$element("canvas")
-			try
+				img = CUI.dom.findElement(element, "img")
+				CUI.dom.remove(img)
+				canvas = CUI.dom.findElement(element, "canvas")
+			else
+				canvas = CUI.dom.$element("canvas")
 				JsBarcode(canvas, data,
 					format: @_barcode_type
 				)
-			catch
-				@__replaceWithLabel("barcode.label.wrong-data.#{@__getLocaType()}")
-				return @
+		catch
+			@__replaceWithLabel("barcode.label.wrong-data.#{@__getLocaType()}")
+			return @
 
 		url = canvas.toDataURL()
 		img = if convertToImage then CUI.dom.element("img", src: url) else canvas
