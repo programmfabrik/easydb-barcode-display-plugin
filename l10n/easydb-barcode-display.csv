@@ -18,5 +18,5 @@ barcode.mask.splitter.option.blockWidth,%(value)s breit,FALSE,%(value)s width,FA
 barcode.mask.splitter.option.code_type,Typ: %(value)s,FALSE,Type: %(value)s,FALSE,Type: %(value)s,FALSE,Tyyppi: %(value)s,FALSE,Typ: %(value)s,FALSE,Tapez : %(valeur)s,FALSE,,FALSE,,FALSE
 barcode.mask.splitter.option.field_name,Feld: %(value)s,FALSE,Field: %(value)s,FALSE,Field: %(value)s,FALSE,Kenttä: %(value)s,FALSE,Fält: %(value)s,FALSE,Champ : %(valeur)s,FALSE,,FALSE,,FALSE
 barcode.mask.splitter.title|text,Barcode,FALSE,Barcode,FALSE,Barcode,FALSE,Viivakoodi,FALSE,Streckkod,FALSE,code à barre,FALSE,,FALSE,,FALSE
+barcode.download|text,Herunterladen...,TRUE,Download...,TRUE,,FALSE,,FALSE,,FALSE,Téléchargement,FALSE,,FALSE,,FALSE
 barcode.download|icon,download,TRUE,download,TRUE,,FALSE,,FALSE,,FALSE,download,FALSE,,FALSE,,FALSE
-barcode.download|tooltip,Herunterladen...,TRUE,Download...,TRUE,,FALSE,,FALSE,,FALSE,Téléchargement,FALSE,,FALSE,,FALSE

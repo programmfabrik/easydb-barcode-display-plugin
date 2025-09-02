@@ -28,7 +28,7 @@ class ez5.Barcode extends CUI.DOMElement
 	render: (data, { convertToImage = false, displayName = "", fieldName, objectType } = {}) ->
 		isQR = @_type == ez5.Barcode.TYPE_QR
 		if isQR
-			@addClass("cui-barcode--matrix")
+			@addClass("cui-barcode--square")
 
 		if not data or not (CUI.util.isString(data) or CUI.util.isNumber(data))
 			if @_mode == "editor"
@@ -70,17 +70,14 @@ class ez5.Barcode extends CUI.DOMElement
 		"
 		downloadLink = CUI.dom.element("a", { href: url, download: fileName })
 		downloadButton = new CUI.Button
+			text: $$("barcode.download|text")
 			icon: $$("barcode.download|icon")
-			size: "mini"
-			tooltip:
-				text: $$("barcode.download|tooltip")
 		element = CUI.dom.element("div")
 
 		CUI.dom.append(downloadLink, downloadButton)
-		CUI.dom.append(element, img)
 		CUI.dom.append(@DOM, downloadLink)
 
-		CUI.dom.replace(@__ratio, element)
+		CUI.dom.replace(@__ratio, img)
 		return @
 
 	__replaceWithLabel: (locaKey, arg) ->

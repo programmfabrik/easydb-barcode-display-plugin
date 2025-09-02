@@ -1,43 +1,51 @@
 .cui-barcode {
-  canvas,
-  img,
-  .cui-label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--toolbar-padding, 10px);
+
+  // regular barcode
+  .cui-barcode-ratio { 
+    line-height: 1;
     height: 142px;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-    object-position: left top;
-  }
-
-  .cui-label {
-    max-width: 256px;
-  }
-
-  &--matrix {
-    max-width: 256px;
-
-    .cui-barcode-ratio {
-      position: relative;
-      padding-bottom: 100%;
-    }
 
     canvas,
-    img,
-    .cui-label {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
+    img {
       height: 100%;
+      width: auto;
     }
 
     canvas {
       display: block !important;
+    }      
+      
+    .cui-label {
+      background: var(--gray-200, hsl(210,5%,96%));
+      padding: var(--toolbar-padding, 10px);
+      min-height: 100px;
+
+      .cui-label-content {
+        max-width: 75%;
+      }
     }
   }
 
-  .cui-label {
-    background: hsl(210,5%,96%);
-    padding: 10px;
+  // is QR code = make it square
+  &.cui-barcode--square {
+    .cui-barcode-ratio {
+      height: auto;
+      max-width: 256px;
+      aspect-ratio: 1 / 1;
+
+      canvas,
+      img {
+        width: 100%;
+        height: 100%;
+      }
+
+      img {
+        object-fit: cover;
+      }
+    }
   }
 }
+
