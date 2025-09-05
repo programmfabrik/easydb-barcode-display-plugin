@@ -42,3 +42,10 @@ code: $(JS) $(THIRDPARTY_FILES)
 clean: clean-base
 
 wipe: wipe-base
+
+zip: build
+	mkdir -p zip/easydb-barcode-display
+	cp -r build zip/easydb-barcode-display/
+	cp manifest.yml zip/easydb-barcode-display/
+	(cd zip; zip - -r . > ../easydb-barcode-display.zip)
+	rm -r zip/
