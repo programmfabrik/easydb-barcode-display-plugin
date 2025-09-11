@@ -6,16 +6,24 @@
   // regular barcode
   .cui-barcode-ratio { 
     line-height: 1;
-    height: 142px;
+    
+    &:has(> img) {
+      height: 142px;
+    }
 
-    canvas,
+    &:has(> canvas) {
+      max-height: 142px;
+    }    
+
     img {
-      height: 100%;
+      max-height: 100%;
       width: auto;
     }
 
     canvas {
       display: block !important;
+      height: auto;
+      max-width: 100%;
     }      
       
     .cui-label {
@@ -34,6 +42,7 @@
     .cui-barcode-ratio {
       height: auto;
       max-width: 256px;
+      max-height: 256px;
       aspect-ratio: 1 / 1;
 
       canvas,
