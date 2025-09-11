@@ -56,7 +56,7 @@ class ez5.Barcode extends CUI.DOMElement
 					format: @_barcode_type
 				)
 		catch
-			@__replaceWithLabel("barcode.label.wrong-data.#{@__getLocaType()}")
+			@__replaceWithLabel("barcode.label.wrong-data.#{@__getLocaType()}", displayName)
 			return @
 
 		url = canvas.toDataURL()
