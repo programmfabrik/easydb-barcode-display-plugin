@@ -61,21 +61,23 @@ class ez5.Barcode extends CUI.DOMElement
 
 		url = canvas.toDataURL()
 		img = CUI.dom.element("img", src: url)
-		fileName = "
-			#{objectType}
-			-
-			#{fieldName}
-			-
-			#{@_type}#{if @_type == ez5.Barcode.TYPE_BAR then " #{@_barcode_type}" else ""}
-		"
-		downloadLink = CUI.dom.element("a", { href: url, download: fileName })
-		downloadButton = new CUI.Button
-			text: $$("barcode.download|text")
-			icon: $$("barcode.download|icon")
-		element = CUI.dom.element("div")
 
-		CUI.dom.append(downloadLink, downloadButton)
-		CUI.dom.append(@DOM, downloadLink)
+		if @_mode != "pdf"
+			fileName = "
+				#{objectType}
+				-
+				#{fieldName}
+				-
+				#{@_type}#{if @_type == ez5.Barcode.TYPE_BAR then " #{@_barcode_type}" else ""}
+			"
+			downloadLink = CUI.dom.element("a", { href: url, download: fileName })
+			downloadButton = new CUI.Button
+				text: $$("barcode.download|text")
+				icon: $$("barcode.download|icon")
+			element = CUI.dom.element("div")
+
+			CUI.dom.append(downloadLink, downloadButton)
+			CUI.dom.append(@DOM, downloadLink)
 
 		CUI.dom.replace(@__ratio, img)
 		return @
