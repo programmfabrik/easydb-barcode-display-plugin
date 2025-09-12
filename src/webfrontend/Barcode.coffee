@@ -25,7 +25,7 @@ class ez5.Barcode extends CUI.DOMElement
 		CUI.dom.append(@DOM, @__ratio)
 		return @
 
-	render: (data, { convertToImage = false, displayName = "", fieldName, objectType } = {}) ->
+	render: (data, { displayName = "", fieldName, objectType } = {}) ->
 		isQR = @_type == ez5.Barcode.TYPE_QR
 		if isQR
 			@addClass("cui-barcode--square")
@@ -60,7 +60,7 @@ class ez5.Barcode extends CUI.DOMElement
 			return @
 
 		url = canvas.toDataURL()
-		img = if convertToImage then CUI.dom.element("img", src: url) else canvas
+		img = CUI.dom.element("img", src: url)
 		fileName = "
 			#{objectType}
 			-
