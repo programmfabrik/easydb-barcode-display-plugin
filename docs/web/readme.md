@@ -11,7 +11,7 @@ menu:
 This [plugin](https://github.com/programmfabrik/easydb-barcode-display) is a [custom mask splitter](https://docs.easydb.de/en/technical/plugins/webfrontend/#masksplitter-plugins-registerplugin). 
 
 It can be used to render different types of barcodes. 
-The library used to generate the barcode is [JsBarcode](https://lindell.me/JsBarcode/), therefore all supported barcodes will depend on which ones the library supports.
+The library used to generate the barcode is [JsBarcode](https://github.com/lindell/JsBarcode), therefore all supported barcodes will depend on which ones the library supports.
 
 The barcode represents a value of an available field in the mask. The type of the field needs to be **text** (not multilingual).
 
