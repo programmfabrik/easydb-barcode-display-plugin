@@ -44,8 +44,8 @@ clean: clean-base
 wipe: wipe-base
 
 zip: build
-	mkdir -p zip/easydb-barcode-display
-	cp -r build zip/easydb-barcode-display/
-	cp manifest.yml zip/easydb-barcode-display/
-	(cd zip; zip - -r . > ../easydb-barcode-display.zip)
+	mkdir -p zip/$(PLUGIN_NAME)
+	cp -r build zip/$(PLUGIN_NAME)/
+	cp manifest.yml zip/$(PLUGIN_NAME)/
+	(cd zip; zip - -r . > ../$(PLUGIN_NAME).zip)
 	rm -r zip/
