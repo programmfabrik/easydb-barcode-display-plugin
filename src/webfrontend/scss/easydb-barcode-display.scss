@@ -7,6 +7,12 @@
   .cui-barcode-ratio { 
     line-height: 1;
 
+    // default responsive image (NG)
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
     .cui-label {
       background: var(--gray-200, hsl(210,5%,96%));
       padding: var(--toolbar-padding, 10px);
