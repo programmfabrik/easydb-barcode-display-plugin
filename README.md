@@ -2,7 +2,9 @@
 
 Custom Mask Splitter for **easydb5** and **fylr** to output a barcode based on data of another field in the record.
 
-Documentation: https://docs.easydb.de/en/sysadmin/configuration/easydb-server.yml/plugins/barcode/
+Documentation:
+- [server](docs/server)
+- [web](docs/web)
 
 ## Contact us
 

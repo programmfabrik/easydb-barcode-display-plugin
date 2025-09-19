@@ -25,50 +25,65 @@ class ez5.Barcode extends CUI.DOMElement
 		CUI.dom.append(@DOM, @__ratio)
 		return @
 
-	render: (data, convertToImage = false) ->
+	render: (data, { displayName = "", fieldName, objectType } = {}) ->
 		isQR = @_type == ez5.Barcode.TYPE_QR
 		if isQR
-			@addClass("cui-barcode--matrix")
+			@addClass("cui-barcode--square")
 
 		if not data or not (CUI.util.isString(data) or CUI.util.isNumber(data))
 			if @_mode == "editor"
-				@__replaceWithLabel("barcode.label.empty-data.#{@__getLocaType()}")
+				@__replaceWithLabel("barcode.label.empty-data.#{@__getLocaType()}", displayName)
 				return @
 			CUI.dom.empty(@__ratio) # No data, other mode than editor, remove the barcode.
 			return @
 
-		if isQR
-			data = data.toString()
-			if data.length >= 1056 # More than 1056 the library throws an error.
-				@__replaceWithLabel("barcode.label.qr-data-too-long")
-				return @
+		try
+			if isQR
+				data = data.toString()
+				if data.length >= 1056 # More than 1056 the library throws an error.
+					@__replaceWithLabel("barcode.label.qr-data-too-long")
+					return @
 
-			element = CUI.dom.div()
-			new QRCode(element, data)
+				element = CUI.dom.div()
+				new QRCode(element, data)
 
-			img = CUI.dom.findElement(element, "img")
-			CUI.dom.remove(img)
-		else
-			element = CUI.dom.$element("canvas")
-			try
-				JsBarcode(element, data,
+				img = CUI.dom.findElement(element, "img")
+				CUI.dom.remove(img)
+				canvas = CUI.dom.findElement(element, "canvas")
+			else
+				canvas = CUI.dom.$element("canvas")
+				JsBarcode(canvas, data,
 					format: @_barcode_type
 				)
-			catch
-				@__replaceWithLabel("barcode.label.wrong-data.#{@__getLocaType()}")
-				return @
+		catch
+			@__replaceWithLabel("barcode.label.wrong-data.#{@__getLocaType()}")
+			return @
 
-		if convertToImage
-			# Overrides the element with an image of the barcode/qrcode.
-			canvas = CUI.dom.findElement(element, "canvas")
-			url = canvas.toDataURL()
-			element = CUI.dom.element("img", src: url)
+		url = canvas.toDataURL()
+		img = CUI.dom.element("img", src: url)
 
-		CUI.dom.replace(@__ratio, element)
+		if @_mode != "pdf"
+			fileName = "
+				#{objectType}
+				-
+				#{fieldName}
+				-
+				#{@_type}#{if @_type == ez5.Barcode.TYPE_BAR then " #{@_barcode_type}" else ""}
+			"
+			downloadLink = CUI.dom.element("a", { href: url, download: fileName })
+			downloadButton = new CUI.Button
+				text: $$("barcode.download|text")
+				icon: $$("barcode.download|icon")
+			element = CUI.dom.element("div")
+
+			CUI.dom.append(downloadLink, downloadButton)
+			CUI.dom.append(@DOM, downloadLink)
+
+		CUI.dom.replace(@__ratio, img)
 		return @
 
-	__replaceWithLabel: (locaKey) ->
-		label = new CUI.Label(text: $$(locaKey), centered: true, appearance: "secondary", size: "mini", multiline: true)
+	__replaceWithLabel: (locaKey, arg) ->
+		label = new CUI.Label(text: $$(locaKey, arg: arg), centered: true, appearance: "secondary", size: "mini", multiline: true)
 		CUI.dom.replace(@__ratio, label)
 		return
 

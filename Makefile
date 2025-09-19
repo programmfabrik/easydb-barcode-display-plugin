@@ -42,3 +42,10 @@ code: $(JS) $(THIRDPARTY_FILES)
 clean: clean-base
 
 wipe: wipe-base
+
+zip: build
+	mkdir -p zip/$(PLUGIN_NAME)
+	cp -r build zip/$(PLUGIN_NAME)/
+	cp manifest.yml zip/$(PLUGIN_NAME)/
+	(cd zip; zip - -r . > ../$(PLUGIN_NAME).zip)
+	rm -r zip/
