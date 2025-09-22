@@ -42,6 +42,11 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 			objecttype_id: idObjecttype
 			schema: "HEAD"
 			filter: (field) =>
+				# allow uuid, systemobjectid and globalobjectid
+				if field.isTopLevelField() and (field instanceof SystemObjectIdColumn or field instanceof UuidColumn)
+					return true
+
+				# beyond that allow only simple text-fields on toplevel
 				if fieldSelectorFilter and not fieldSelectorFilter?(field)
 					return false
 
@@ -81,7 +86,19 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 					options.push(value: option)
 				return options
 		,
+			type: CUI.Input
+			name: "code_prefix"
+			form:
+				label: $$("barcode.custom.splitter.options.code_prefix.label")
+				hint: $$("barcode.custom.splitter.options.code_prefix.hint")
+		,
 			fieldSelector
+		,
+			type: CUI.Input
+			name: "code_suffix"
+			form:
+				label: $$("barcode.custom.splitter.options.code_suffix.label")
+				hint: $$("barcode.custom.splitter.options.code_suffix.hint")
 		]
 
 	renderField: (opts) ->
@@ -89,8 +106,19 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 		if not fieldName # Not configured.
 			return
 
-		_data = opts.data
+		if fieldName in ['_uuid', '_system_object_id', '_global_object_id']
+			_data = opts.top_level_data
+		else
+			_data = opts.data
+
 		data = _data[fieldName]
+
+		# add prefix and suffix if given
+		if @opts?.options?.code_prefix
+			data = @opts.options.code_prefix + data
+		if @opts?.options?.code_suffix
+			data = data + @opts.options.code_suffix
+
 		localizedDisplayName = _data["#{fieldName}:rendered"]?.getField().fullNameLocalized();
 
 		barcode = new ez5.Barcode
