@@ -42,6 +42,12 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 			objecttype_id: idObjecttype
 			schema: "HEAD"
 			filter: (field) =>
+				# allow uuid, systemobjectid and globalobjectid
+				if field.isTopLevelField()
+					if field instanceof SystemObjectIdColumn or 
+						field instanceof UuidColumn
+							return true
+				
 				if fieldSelectorFilter and not fieldSelectorFilter?(field)
 					return false
 
