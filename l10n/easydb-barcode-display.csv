@@ -20,3 +20,7 @@ barcode.mask.splitter.option.field_name,Feld: %(value)s,FALSE,Field: %(value)s,F
 barcode.mask.splitter.title|text,Barcode,FALSE,Barcode,FALSE,Barcode,FALSE,Viivakoodi,FALSE,Streckkod,FALSE,code à barre,FALSE,,FALSE,,FALSE
 barcode.download|icon,download,TRUE,download,TRUE,,FALSE,,FALSE,,FALSE,download,FALSE,,FALSE,,FALSE
 barcode.download|text,Herunterladen...,TRUE,Download...,TRUE,,FALSE,,FALSE,,FALSE,Téléchargement,FALSE,,FALSE,,FALSE
+barcode.custom.splitter.options.code_prefix.label,Präfix,TRUE,Prefix,TRUE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+barcode.custom.splitter.options.code_prefix.hint,Wird dem Wert aus dem gewählten Feld vorangestellt,TRUE,Is prepended to the value of the selected field,TRUE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+barcode.custom.splitter.options.code_suffix.label,Suffix,TRUE,Suffix,TRUE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
+barcode.custom.splitter.options.code_suffix.hint,Wird dem Wert aus dem gewählten Feld angehängt,TRUE,Is appended to the value of the selected field,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE,,FALSE
