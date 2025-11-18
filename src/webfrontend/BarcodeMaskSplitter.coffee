@@ -6,6 +6,9 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 	renderAsField: ->
 		return true
 
+	isVisible: (mode, opts) ->
+		return super(mode, opts) and mode != "expert"
+
 	getOptions: ->
 		fieldSelectorOpts =
 			store_value: "name"
@@ -128,7 +131,7 @@ class ez5.BarcodeMaskSplitter extends CustomMaskSplitter
 		barcode.render(data, {
 			displayName: localizedDisplayName,
 			fieldName: fieldName,
-			objectType: opts.top_level_data._objecttype,
+			objectType: opts.top_level_data?._objecttype,
 		})
 
 	hasContent: (opts) ->
